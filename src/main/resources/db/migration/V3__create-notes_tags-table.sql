@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS notes_tags
+(
+    id      VARCHAR(255) PRIMARY KEY,
+    tag_name VARCHAR(255) NOT NULL,
+    note_id VARCHAR(255) NOT NULL,
+    user_id  VARCHAR(255) NOT NULL,
+    FOREIGN KEY (note_id) REFERENCES notes (id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+);
