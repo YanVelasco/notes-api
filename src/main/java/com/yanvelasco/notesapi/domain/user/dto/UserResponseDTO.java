@@ -1,7 +1,7 @@
 package com.yanvelasco.notesapi.domain.user.dto;
 
 public record UserResponseDTO(
-        Long id,
+        String id,
         String name,
         String email,
         String avatarUrl,
