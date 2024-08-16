@@ -6,5 +6,5 @@ CREATE TABLE IF NOT EXISTS notes
     user_id     VARCHAR(255) NOT NULL,
     created_at  TIMESTAMP,
     updated_at  TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users (id)
+    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
