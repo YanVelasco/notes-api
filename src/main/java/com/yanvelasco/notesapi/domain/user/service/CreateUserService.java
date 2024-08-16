@@ -25,7 +25,6 @@ public class CreateUserService {
                 .email(userRequestDTO.email())
                 .password(encryptedPassword)
                 .avatarUrl(userRequestDTO.avatarUrl())
-                .updatedAt(null)
                 .build();
 
         if (userRepository.existsByEmail(newUser.getEmail())) {
