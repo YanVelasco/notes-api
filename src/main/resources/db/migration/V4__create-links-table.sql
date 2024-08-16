@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS links (
+    id  VARCHAR(255) PRIMARY KEY,
+    url VARCHAR(255) NOT NULL,
+    note_id VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    FOREIGN KEY (note_id) REFERENCES notes (id) ON DELETE CASCADE
+);
