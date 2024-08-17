@@ -53,7 +53,7 @@ public class CreateNoteService {
         List<TagEntity> tags = new ArrayList<>();
         for (String tagName : noteRequestDTO.tags()) {
             TagEntity tagEntity = tagRepository.findByName(tagName)
-                    .orElseGet(() -> tagRepository.save(new TagEntity(tagName)));
+                    .orElseGet(() -> tagRepository.save(new TagEntity(tagName, user.get())));
             tags.add(tagEntity);
         }
         newNote.setTags(tags);

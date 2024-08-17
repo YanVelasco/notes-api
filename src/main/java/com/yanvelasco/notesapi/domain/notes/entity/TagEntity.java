@@ -1,5 +1,6 @@
 package com.yanvelasco.notesapi.domain.notes.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.yanvelasco.notesapi.domain.user.entity.UserEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,9 +24,11 @@ public class TagEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonBackReference
     private UserEntity user;
 
-    public TagEntity(String name) {
+    public TagEntity(String name, UserEntity user) {
         this.name = name;
+        this.user = user;
     }
 }
