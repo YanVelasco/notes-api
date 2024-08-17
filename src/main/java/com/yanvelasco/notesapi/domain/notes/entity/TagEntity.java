@@ -1,5 +1,6 @@
 package com.yanvelasco.notesapi.domain.notes.entity;
 
+import com.yanvelasco.notesapi.domain.user.entity.UserEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,4 +20,12 @@ public class TagEntity {
 
     @Column(name = "tag_name", nullable = false)
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntity user;
+
+    public TagEntity(String name) {
+        this.name = name;
+    }
 }
