@@ -1,5 +1,6 @@
 package com.yanvelasco.notesapi.domain.user.entity;
 
+import com.yanvelasco.notesapi.domain.notes.entity.NoteEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,6 +38,9 @@ public class UserEntity implements UserDetails {
 
     @Column(name = "avatar_url")
     private String avatarUrl;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<NoteEntity> notes;
 
     @Column(name = "created_at")
     @CreationTimestamp

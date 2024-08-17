@@ -1,6 +1,5 @@
-package com.yanvelasco.notesapi.domain.links.entity;
+package com.yanvelasco.notesapi.domain.notes.entity;
 
-import com.yanvelasco.notesapi.domain.notes.entity.NoteEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -10,24 +9,31 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "links")
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class LinkEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Setter(AccessLevel.NONE)
     @Column(name = "id")
     private String id;
 
-    @Column(name = "url")
+    @Column(name = "url", nullable = false)
     private String url;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "note_id")
-    private NoteEntity noteId;
+    @ManyToOne
+    @JoinColumn(name = "note_id", nullable = false)
+    private NoteEntity note;
 
     @Column(name = "created_at")
     @CreationTimestamp
     private Timestamp createdAt;
+
+    public LinkEntity(String id, String url, NoteEntity note) {
+        this.id = id;
+        this.url = url;
+        this.note = note;
+    }
 }
