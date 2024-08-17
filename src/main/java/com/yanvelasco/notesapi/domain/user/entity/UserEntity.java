@@ -1,6 +1,8 @@
 package com.yanvelasco.notesapi.domain.user.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.yanvelasco.notesapi.domain.notes.entity.NoteEntity;
+import com.yanvelasco.notesapi.domain.notes.entity.TagEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,7 +42,12 @@ public class UserEntity implements UserDetails {
     private String avatarUrl;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<NoteEntity> notes;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<TagEntity> tags;
 
     @Column(name = "created_at")
     @CreationTimestamp
