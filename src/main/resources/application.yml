@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: notes_api
+
+  security:
+    user:
+      name: Yan
+      password: 123
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/notes-api
+    username: postgres
+    password: root
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+        web: DEBUG
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+
+    com:
+      yanvelasco:
+        notes_api: DEBUG
