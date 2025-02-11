@@ -29,7 +29,7 @@ public class NoteServiceIMP implements NoteService {
     }
 
     @Override
-    public ResponseEntity<NoteDTO> creteNoteForUser(String username, String content) {
+    public ResponseEntity<NoteDTO> creteNoteForUser(String content, String username) {
         var note = NoteEntity.builder()
                 .content(content)
                 .ownerUsername(username)
