@@ -1,5 +1,6 @@
 package com.yanvelasco.notes_api.model.user.dto;
 
+import com.yanvelasco.notes_api.model.user.entities.RoleEntity;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
@@ -19,7 +20,7 @@ public record UserDTO(
     String twoFactorSecret,
     Boolean twoFactorEnabled,
     String signUpMethod,
-    UUID roleId,
+    RoleEntity roleEntity,
     LocalDateTime createdAt,
     LocalDateTime updatedAt
 ) {
