@@ -3,6 +3,7 @@ package com.yanvelasco.notes_api.model.user.controller;
 import com.yanvelasco.notes_api.model.user.dto.UserDTO;
 import com.yanvelasco.notes_api.model.user.service.UserService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/admin")
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class AdminController {
 
     private final UserService userService;
