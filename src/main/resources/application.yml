@@ -2,11 +2,6 @@ spring:
   application:
     name: notes_api
 
-  security:
-    user:
-      name: Yan
-      password: 123
-
   datasource:
     url: jdbc:postgresql://localhost:5432/notes-api
     username: postgres
