@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -25,6 +26,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated());
         http.csrf(AbstractHttpConfigurer::disable);
+        http.addFilterBefore(new RequestValidationFilter(), UsernamePasswordAuthenticationFilter.class);
         //http.formLogin(withDefaults());
         http.httpBasic(withDefaults());
         return http.build();
