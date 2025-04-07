@@ -26,7 +26,6 @@ public class SecurityConfig {
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated());
         http.csrf(AbstractHttpConfigurer::disable);
-        http.addFilterBefore(new RequestValidationFilter(), UsernamePasswordAuthenticationFilter.class);
         //http.formLogin(withDefaults());
         http.httpBasic(withDefaults());
         return http.build();
