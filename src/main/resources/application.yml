@@ -3,7 +3,7 @@ spring:
     name: notes_api
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/notes-api
+    url: jdbc:postgresql://localhost:5432/notes_api
     username: postgres
     password: root
 
